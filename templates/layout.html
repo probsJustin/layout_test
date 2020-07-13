@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Localnet Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css_mainStyle.css">
+</head>
+<body>
+<div class="fullBodyWrapper">
+    <div class="header">
+        <div class="dropDownImage">
+            <img src="static/appliance-blue_400.png" onClick="myFunction()" class="dropDownImage"></img>
+          <div id="myDropdown" class="dropdown-content">
+              {% if dict_menuData is none %}
+                    <a href="">Menu Configuration is Missing</a>
+              {% else %}
+                {% for x in dict_menuData: %}
+                    <a href="{{dict_menuData[x]}}">{{x}}</a>
+                {% endfor %}
+              {% endif %}
+          </div>
+        </div>
+
+        <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropDownImage')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+        </script>
+        <p>Local Network Support Page</p>
+
+    </div>
+    <div class="wrapper">
+        <div class="inner_wrapper">
+            <div class="floating_wrapper">
+                <div class="gapPage">
+                {% if dict_menuData is none %}
+                    Coding Standards Markdown is Missing.
+                {% else %}
+
+                    {{ string_markDownText }}
+
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
