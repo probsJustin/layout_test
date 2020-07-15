@@ -9,10 +9,10 @@
 <div class="fullBodyWrapper">
     <div class="header">
         <div class="dropDownImage">
-            <img src="static/appliance-blue_400.png" onClick="myFunction()" class="dropDownImage"></img>
+            <img src="static/randomMenuIcon.png" onClick="myFunction()" class="dropDownImage"></img>
           <div id="myDropdown" class="dropdown-content">
               {% if dict_menuData is none %}
-                    <a href="">Menu Configuration is Missing</a>
+                    <a href="">Something Went Wrong. Potential Configuration Missing. </a>
               {% else %}
                 {% for x in dict_menuData: %}
                     <a href="{{dict_menuData[x]}}">{{x}}</a>
@@ -50,7 +50,7 @@
             <div class="floating_wrapper">
                 <div class="gapPage">
                 {% if dict_menuData is none %}
-                    Coding Standards Markdown is Missing.
+                    Something Went Wrong. Potential Configuration Missing.
                 {% else %}
 
                     {{ string_markDownText }}
